@@ -1,3 +1,21 @@
+<h2>Client registration cli app</h2>
+
+<p>To see the list of commands run: $php artisan list</p>
+
+<h5>Client registration commands:</h5>
+<div>
+    <ul>
+        <li>$php artisan client:add</li>
+        <li>$php artisan client:find</li>
+        <li>$php artisan client:list</li>
+        <li>$php artisan client:update</li>
+        <li>$php artisan client:delete</li>
+    </ul>
+</div>
+<p>Run unit tests: $vendor/bin/phpunit </p> 
+
+<p>Import csv file: $php artisan import:csv</p>
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
