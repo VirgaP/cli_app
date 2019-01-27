@@ -11,9 +11,9 @@ return [
     * The validation rules to check for user model input.
     */
     'validation_rules' => [
-        'firstname'     => 'string|min:1|max:255',
-        'lastname'     => 'string|min:1|max:255',
-        'email'    => 'string|email',
+        'firstname'     => 'required|string|min:1|max:255',
+        'lastname'     => 'required|string|min:1|max:255',
+        'email'=> 'required|email|max:255|unique:clients',
         'phoneNumber1' => ['required', new PhoneNumber],
         'phoneNumber2' => [new PhoneNumber],
         'comment' => 'string|required'

@@ -11,11 +11,16 @@ namespace Tests\Unit;
 
 use App\Client;
 use App\ClientRepository;
+use App\Console\Commands\findClient;
 use Illuminate\Foundation\Console\Kernel;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\BufferedOutput;
+use Symfony\Component\Console\Tester\CommandTester;
 use Tests\TestCase;
+use Symfony\Component\Console\Application as ConsoleApplication;
+
 
 use Faker\Generator as Faker;
 
@@ -26,12 +31,18 @@ use Faker\Generator as Faker;
 class ClientUnitTest extends TestCase{
 
     use RefreshDatabase;
+    use WithFaker;
+
+
+    protected $command;
+
+    protected $commandTester;
 
     /** @test */
     public function it_can_create_a_client()
     {
         $data = [
-            'firstname' => $this->faker->word,
+            'firstname' => $this->faker->firstName(),
             'lastname' => $this->faker->word,
             'email' => $this->faker->unique()->email,
             'phoneNumber1'=>$this->faker->e164PhoneNumber,
@@ -56,7 +67,7 @@ class ClientUnitTest extends TestCase{
     {
         $client = factory(Client::class)->create();
         $clientRepo = new ClientRepository(new Client());
-        $found = $clientRepo->findCarousel($client->id);
+        $found = $clientRepo->findClient($client->id);
 
         $this->assertInstanceOf(Client::class, $found);
         $this->assertEquals($found->firstname, $client->firstname);
@@ -73,7 +84,7 @@ class ClientUnitTest extends TestCase{
         $client = factory(Client::class)->create();
 
             $data = [
-                'firstname' => $this->faker->word,
+                'firstname' => $this->faker->firstName(),
                 'lastname' => $this->faker->word,
                 'email' => $this->faker->unique()->email,
                 'phoneNumber1'=>$this->faker->e164PhoneNumber,
@@ -104,17 +115,34 @@ class ClientUnitTest extends TestCase{
         $this->assertTrue($delete);
     }
 
-    /* * @test */
-    public function getConsoleResponse()
+    /** @test */
+    public function it_has_add_client_command()
     {
-        $kernel = $this->app->make(Kernel::class);
-        $status = $kernel->handle(
-            $input = new ArrayInput([
-                'command' => 'client:find', // put your command name here
-            ]),
-            $output = new BufferedOutput()
-        );
-
-        return json_decode($output->fetch(), true);
+        $this->assertTrue(class_exists(\App\Console\Commands\addClient::class));
     }
+
+    /** @test */
+    public function it_has_find_client_command()
+    {
+        $this->assertTrue(class_exists(\App\Console\Commands\findClient::class));
+    }
+
+    /** @test */
+    public function it_has_update_client_command()
+    {
+        $this->assertTrue(class_exists(\App\Console\Commands\updateClient::class));
+    }
+
+    /** @test */
+    public function it_has_delete_client_command()
+    {
+        $this->assertTrue(class_exists(\App\Console\Commands\deleteClient::class));
+    }
+
+    /** @test */
+    public function it_has_list_clients_command()
+    {
+        $this->assertTrue(class_exists(\App\Console\Commands\showClients::class));
+    }
+
 }
