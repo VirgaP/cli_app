@@ -11,8 +11,7 @@ class deleteClient extends Command
      *
      * @var string
      */
-
-        protected $signature = 'client:delete';
+    protected $signature = 'client:delete';
 
     /**
      * The console command description.

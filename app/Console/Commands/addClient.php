@@ -13,9 +13,7 @@ class addClient extends Command
      *
      * @var string
      */
-//    protected $signature = 'add:client {firstname} {lastname} {email} {phoneNumber1} {phoneNumber2} {comment}';
-
-        protected $signature = 'client:add';
+    protected $signature = 'client:add';
     /**
      * The console command description.
      *

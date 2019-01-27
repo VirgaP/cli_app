@@ -48,51 +48,6 @@ class updateClient extends Command
 
         $client = $model::where('email', $email)->first();
 
-//        if ($this->confirm('Do you want to update firstname "'.$client->firstname.'"?')) {
-//
-//            $client->firstname = $request->get('firstname');
-//            $firstname = $this->validate_ask('Enter client\'s firstname', ['firstname' => config('addclient.validation_rules.firstname')]);
-//            $client->firstname = $firstname;
-//            $this->info('Client "'.$client->firstname.' '.$client->lastname.'" has been updated.');
-//        }
-//        if ($this->confirm('Do you want to update lastname " '.$client->lastname.'"?')){
-//            $client->lastname = $request->get('lastname');
-//            $lastname = $this->validate_ask('Enter client\'s lastname', ['lastname' => config('addclient.validation_rules.lastname')]);
-//            $client->lastname = $lastname;
-//            $this->info('Client "'.$client->lastname.'" has been updated.');
-//        }
-//        if ($this->confirm('Do you want to update email "'.$client->email.'"?')) {
-//
-//            $client->email = $request->get('email');
-//            $email = $this->validate_ask('Enter client\'s email', ['email' => config('addclient.validation_rules.email')]);
-//            $client->email = $email;
-//            $this->info('Client\'s e-mail"'.$client->email.'" has been updated.');
-//        }
-//        if ($this->confirm('Do you want to update 1st phone number "'.$client->phoneNumber1.'"?')) {
-//
-//            $client->phoneNumber1 = $request->get('phoneNumber1');
-//            $phoneNumber1 = $this->validate_ask('Enter client\'s 1st phone number', ['phoneNumber1' => config('addclient.validation_rules.phoneNumber1')]);
-//            $client->phoneNumber1 = $phoneNumber1;
-//            $this->info('Client\'s 1st phone number"'.$client->phoneNumber1.'" has been updated.');
-//        }
-//        if ($this->confirm('Do you want to update 2nd phone number "'.$client->phoneNumber2.'"?')) {
-//
-//            $client->phoneNumber2 = $request->get('phoneNumber2');
-//            $phoneNumber2 = $this->validate_ask('Enter client\'s 2nd phone number', ['phoneNumber2' => config('addclient.validation_rules.phoneNumber2')]);
-//            $client->phoneNumber2 = $phoneNumber2;
-//            $this->info('Client\'s 2nd phone number"'.$client->phoneNumber2.'" has been updated.');
-//        }
-//        if ($this->confirm('Do you want to update comment: "'.$client->comment.'"?')) {
-//
-//            $client->comment = $request->get('comment');
-//            $comment = $this->validate_ask('Enter comment', ['comment' => config('addclient.validation_rules.comment')]);
-//            $client->comment = $comment;
-//            $this->info('Comment"'.$client->comment.'" has been updated.');
-//        }
-//        $client->save();
-//        $this->info('Client updated!');
-
-
         $toUpdate = $this->choice(
             'Which client details woudl you like to update?',
             ['firstname', 'lastname', 'email', '1st phone number', '2nd phone number', 'comment']

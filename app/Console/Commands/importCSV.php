@@ -21,7 +21,7 @@ class importCSV extends Command
      */
     protected $description = 'Imports csv file';
 
-    
+
     /**
      * Create a new command instance.
      *
@@ -40,17 +40,16 @@ class importCSV extends Command
     public function handle()
     {
         $model = config('addclient.model');
-        $client = new $model();
 
-        $CSVFile = public_path('test.csv');
+        $csvFile = public_path('test.csv');
 
-        if(!file_exists($CSVFile) || !is_readable($CSVFile))
+        if(!file_exists($csvFile) || !is_readable($csvFile))
             return false;
 
         $header = null;
         $data = array();
         $data = array_filter($data);
-        if (($handle = fopen($CSVFile,'r')) !== false){
+        if (($handle = fopen($csvFile,'r')) !== false){
             while (($row = fgetcsv($handle, 1000, ',', $enclosure = '"')) !==false){
                 if (!$header)
                 $header = $row;
@@ -61,19 +60,11 @@ class importCSV extends Command
             fclose($handle);
         }
 
-//        dd($data);
-
         $dataCount = count($data);
         for ($i = 0; $i < $dataCount; $i ++){
             Client::firstOrCreate($data[$i]);
-//                $client->save();
         }
 
-
         echo "Client data added successfully"."\n";
-//
-//        $this->csvToArray();
-//        $this->importCsv();
-//        echo "Client data added successfully"."\n";
     }
 }
