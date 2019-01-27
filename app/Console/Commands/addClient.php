@@ -58,43 +58,6 @@ class addClient extends Command
         $client->save();
         $this->info('New client added!');
 
-//        $firstname = $this->argument('firstname');
-//        $lastname = $this->argument('lastname');
-//        $email= $this->argument('email');
-//        $phoneNumber1 = $this->argument('phoneNumber1');
-//        $phoneNumber2 = $this->argument('phoneNumber2');
-//        $comment = $this->argument('comment');
-
-
-//        Storage::put("clients.csv", $this->arguments());
-//        Storage::append('clients', $this->argument('firstname'));
-
-
-//        Client::create(compact('firstname', 'lastname', 'email', 'phoneNumber1', 'phoneNumber2' ,'comment'));
-
-//        $file = public_path('client_info.csv');
-//        $delimiter = ',';
-//        if(!file_exists($file) || !is_readable($file))
-//            return false;
-//
-//        $header = null;
-//        $data = array();
-//
-//        if (($handle = fopen($file,'r')) !== false){
-//            while (($row = fgetcsv($handle, 1000, $delimiter)) !==false){
-//                if (!$header)
-//                    $header = $row;
-//                else
-//                    $data[] = array_combine($header, $row);
-//            }
-//            fclose($handle);
-//        }
-//
-//        $meta_descArr = $data;
-//        for ($i = 0; $i < count($meta_descArr); $i ++){
-//            Client::firstOrCreate($meta_descArr[$i]);
-//        }
-//        echo "Clients data added"."\n";
     }
 
     public function validate_ask($question, $rules)

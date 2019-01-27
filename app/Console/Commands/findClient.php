@@ -46,7 +46,7 @@ class findClient extends Command
         $client = $model::where('email', $email)->first();
 
         if ($client) {
-            $this->info('Client record found: "'.$client->firstname.' '.$client->lastname.' '.$client->email.' '.$client->phoneNumber1.' '.$client->phoneNumber2.' '.$client->comment.'" ');
+            $this->line('Client record found: "'.$client->firstname.' '.$client->lastname.' '.$client->email.' '.$client->phoneNumber1.' '.$client->phoneNumber2.' '.$client->comment.'" ');
 
         } else {
             $this->error('No client record matching request found');
