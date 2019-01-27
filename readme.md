@@ -1,6 +1,12 @@
 <h2>Client registration cli app</h2>
 
+<p>Install composer dependencies: $composer install</p>
+<p>Create a copy of .env file: $cp .env.example .env<p>
 <p>To see the list of commands run: $php artisan list</p>
+<p>Generate an app encryption key : $php artisan key:generate</p>
+<p>Create an empty database for our application</p>
+<p>In the .env file, add database information (DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME, and DB_PASSWORD)</p>
+<p>Migrate the database: $php artisan migrate</p>
 
 <h5>Client registration commands:</h5>
 <div>
